@@ -23,4 +23,14 @@ public class JuegoTest {
         }
         return board;
     }
+
+    private Player[] createPairOfPlayers() {
+        Player playerOne = mock(Player.class);
+        when(playerOne.getChip()).thenReturn('X');
+
+        Player playerTwo = mock(Player.class);
+        when(playerTwo.getChip()).thenReturn('O');
+
+        return new Player[]{playerOne, playerTwo};
+    }
 }
