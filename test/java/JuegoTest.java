@@ -35,12 +35,14 @@ public class JuegoTest {
         Juego gameUnderTest = new Juego(createColumnFilledBoard(), pairOfPlayers);
 
         assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
-
     }
 
     @Test
     public void playerOneWinsWhenFillingRowWorks() {
+        Player[] pairOfPlayers = createPairOfPlayers();
+        Juego gameUnderTest = new Juego(createRowFilledBoard(), pairOfPlayers);
 
+        assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
     }
 
     private Casilla[][] createFullBoard() {
