@@ -1,18 +1,39 @@
+
 import org.junit.jupiter.api.Test;
-import sun.tools.jconsole.Tab;
-
-import javax.swing.text.Position;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class JuegoTest {
+
 
     @Test
     public void whenBoardIsFullGameIsOver () {
         Casilla[][] board = createFullBoard();
         Juego game = new Juego(new Tablero(board), new Player[0]);
         assertTrue(game.isOver());
+    }
+
+    @Test
+    public void playerOneWinsWhenFillingLeftsideDiagonalWorks() {
+        Player[] pairOfPlayers = createPairOfPlayers();
+        Juego gameUnderTest = new Juego(createLeftsideDiagonalFilledBoard(), pairOfPlayers);
+
+        assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
+    }
+
+    @Test
+    public void playerOneWinsWhenFillingRightsideDiagonalWorks() {
+
+    }
+
+    @Test
+    public void playerOneWinsWhenFillingColumnWorks() {
+
+    }
+
+    @Test
+    public void playerOneWinsWhenFillingRowWorks() {
+
     }
 
     private Casilla[][] createFullBoard() {
