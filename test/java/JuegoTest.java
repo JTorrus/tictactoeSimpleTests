@@ -1,13 +1,12 @@
-
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class JuegoTest {
-
-
     @Test
-    public void whenBoardIsFullGameIsOver () {
+    public void whenBoardIsFullGameIsOver() {
         Casilla[][] board = createFullBoard();
         Juego game = new Juego(new Tablero(board), new Player[0]);
         assertTrue(game.isOver());
@@ -44,6 +43,8 @@ public class JuegoTest {
 
         assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
     }
+
+    // ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private Casilla[][] createFullBoard() {
         Casilla[][] board = new Casilla[3][3];
