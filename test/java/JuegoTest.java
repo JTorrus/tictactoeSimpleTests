@@ -31,6 +31,10 @@ public class JuegoTest {
 
     @Test
     public void playerOneWinsWhenFillingColumnWorks() {
+        Player[] pairOfPlayers = createPairOfPlayers();
+        Juego gameUnderTest = new Juego(createColumnFilledBoard(), pairOfPlayers);
+
+        assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
 
     }
 
