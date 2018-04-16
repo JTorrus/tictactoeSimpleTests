@@ -59,6 +59,72 @@ public class JuegoTest {
         return board;
     }
 
+    private Tablero createRowFilledBoard() {
+        Posicion positionOne = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(0);
+        when(positionOne.getY()).thenReturn(0);
+
+        Posicion positionTwo = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(0);
+        when(positionOne.getY()).thenReturn(1);
+
+        Posicion positionThree = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(0);
+        when(positionOne.getY()).thenReturn(2);
+
+        Tablero board = new Tablero(simulateEmptyBoard());
+
+        board.getCasilla(positionOne).setChip('X');
+        board.getCasilla(positionTwo).setChip('X');
+        board.getCasilla(positionThree).setChip('X');
+
+        return board;
+    }
+
+    private Tablero createRightsideDiagonalFilleddBoard() {
+        Posicion positionOne = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(0);
+        when(positionOne.getY()).thenReturn(0);
+
+        Posicion positionTwo = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(1);
+        when(positionOne.getY()).thenReturn(1);
+
+        Posicion positionThree = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(2);
+        when(positionOne.getY()).thenReturn(2);
+
+        Tablero board = new Tablero(simulateEmptyBoard());
+
+        board.getCasilla(positionOne).setChip('X');
+        board.getCasilla(positionTwo).setChip('X');
+        board.getCasilla(positionThree).setChip('X');
+
+        return board;
+    }
+
+    private Tablero createLeftsideDiagonalFilledBoard() {
+        Posicion positionOne = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(0);
+        when(positionOne.getY()).thenReturn(2);
+
+        Posicion positionTwo = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(1);
+        when(positionOne.getY()).thenReturn(1);
+
+        Posicion positionThree = mock(Posicion.class);
+        when(positionOne.getX()).thenReturn(2);
+        when(positionOne.getY()).thenReturn(0);
+
+        Tablero board = new Tablero(simulateEmptyBoard());
+
+        board.getCasilla(positionOne).setChip('X');
+        board.getCasilla(positionTwo).setChip('X');
+        board.getCasilla(positionThree).setChip('X');
+
+        return board;
+    }
+
     private Casilla[][] simulateEmptyBoard() {
         Casilla[][] cells = new Casilla[3][3];
         Casilla emptySquare = mock(Casilla.class);
