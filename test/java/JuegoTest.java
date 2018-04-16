@@ -23,7 +23,10 @@ public class JuegoTest {
 
     @Test
     public void playerOneWinsWhenFillingRightsideDiagonalWorks() {
+        Player[] pairOfPlayers = createPairOfPlayers();
+        Juego gameUnderTest = new Juego(createRightsideDiagonalFilleddBoard(), pairOfPlayers);
 
+        assertTrue(pairOfPlayers[0] == gameUnderTest.whoWon());
     }
 
     @Test
