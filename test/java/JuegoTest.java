@@ -5,7 +5,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class JuegoTest {
-    @Test
+    /*@Test OLD
     public void whenBoardIsFullGameIsOver() {
         Casilla[][] board = createFullBoard();
         Juego game = new Juego(new Tablero(board), new Player[0]);
@@ -168,5 +168,5 @@ public class JuegoTest {
         }
 
         return cells;
-    }
+    }*/
 }
