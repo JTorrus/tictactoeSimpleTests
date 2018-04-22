@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.any;
@@ -49,5 +51,37 @@ public class JuegoAdvancedTest {
         when(occupiedSquare.isOccupied()).thenReturn(true);
 
         return occupiedSquare;
+    }
+
+    private Tablero createColumnFilledBoard() {
+        Tablero board = mock(Tablero.class);
+        final Casilla emptySquare = createEmptySquare();
+        final Casilla occupiedSquare = createOccupiedSquare();
+
+        when(board.getCasilla(any(Posicion.class))).then(new Answer<Casilla>() {
+            public Casilla answer(InvocationOnMock invocationOnMock) {
+                Posicion positionUnderAnswer = (Posicion) invocationOnMock.getArguments()[0];
+
+                if (positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 0 || positionUnderAnswer.getX() == 1 && positionUnderAnswer.getY() == 0 || positionUnderAnswer.getY() == 2 && positionUnderAnswer.getY() == 0) {
+                    return occupiedSquare;
+                } else {
+                    return emptySquare;
+                }
+            }
+        });
+
+        return board;
+    }
+
+    private Tablero createRowFilledBoard() {
+
+    }
+
+    private Tablero createRightsideDiagonalFilledBoard() {
+
+    }
+
+    private Tablero createLeftsideDiagonalFilledBoard() {
+
     }
 }
