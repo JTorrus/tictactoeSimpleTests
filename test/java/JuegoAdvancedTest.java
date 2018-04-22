@@ -66,18 +66,13 @@ public class JuegoAdvancedTest {
     }
 
     private Player[] createPairOfPlayers() {
-        Player[] pairOfPlayers = new Player[2];
-
         Player playerOne = mock(Player.class);
         when(playerOne.getChip()).thenReturn('X');
 
         Player playerTwo = mock(Player.class);
         when(playerTwo.getChip()).thenReturn('O');
 
-        pairOfPlayers[0] = playerOne;
-        pairOfPlayers[1] = playerTwo;
-
-        return pairOfPlayers;
+        return new Player[]{playerOne, playerTwo};
     }
 
     private Casilla createEmptySquare() {
