@@ -82,7 +82,7 @@ public class JuegoAdvancedTest {
             public Casilla answer(InvocationOnMock invocationOnMock) {
                 Posicion positionUnderAnswer = (Posicion) invocationOnMock.getArguments()[0];
 
-                if (positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 0 || positionUnderAnswer.getX() == 1 && positionUnderAnswer.getY() == 1 || positionUnderAnswer.getY() == 2 && positionUnderAnswer.getY() == 2) {
+                if (positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 0 || positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 1 || positionUnderAnswer.getY() == 0 && positionUnderAnswer.getY() == 2) {
                     return occupiedSquare;
                 } else {
                     return emptySquare;
@@ -94,10 +94,42 @@ public class JuegoAdvancedTest {
     }
 
     private Tablero createRightsideDiagonalFilledBoard() {
+        Tablero board = mock(Tablero.class);
+        final Casilla emptySquare = createEmptySquare();
+        final Casilla occupiedSquare = createOccupiedSquare();
 
+        when(board.getCasilla(any(Posicion.class))).then(new Answer<Casilla>() {
+            public Casilla answer(InvocationOnMock invocationOnMock) {
+                Posicion positionUnderAnswer = (Posicion) invocationOnMock.getArguments()[0];
+
+                if (positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 0 || positionUnderAnswer.getX() == 1 && positionUnderAnswer.getY() == 1 || positionUnderAnswer.getY() == 2 && positionUnderAnswer.getY() == 2) {
+                    return occupiedSquare;
+                } else {
+                    return emptySquare;
+                }
+            }
+        });
+
+        return board;
     }
 
     private Tablero createLeftsideDiagonalFilledBoard() {
+        Tablero board = mock(Tablero.class);
+        final Casilla emptySquare = createEmptySquare();
+        final Casilla occupiedSquare = createOccupiedSquare();
 
+        when(board.getCasilla(any(Posicion.class))).then(new Answer<Casilla>() {
+            public Casilla answer(InvocationOnMock invocationOnMock) {
+                Posicion positionUnderAnswer = (Posicion) invocationOnMock.getArguments()[0];
+
+                if (positionUnderAnswer.getX() == 0 && positionUnderAnswer.getY() == 2 || positionUnderAnswer.getX() == 1 && positionUnderAnswer.getY() == 1 || positionUnderAnswer.getY() == 2 && positionUnderAnswer.getY() == 0) {
+                    return occupiedSquare;
+                } else {
+                    return emptySquare;
+                }
+            }
+        });
+
+        return board;
     }
 }
